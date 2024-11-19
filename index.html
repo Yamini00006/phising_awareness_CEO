@@ -1,115 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing Awareness Exercise</title>
-    <style>
-        /* General Styling */
-        body { 
-            font-family: Arial, sans-serif; 
-            color: #333333; 
-            text-align: center; 
-            padding: 50px; 
-            margin: 0;
-            background: linear-gradient(135deg, #f05053, #e1eec3); /* Attractive background gradient */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        
-        /* Container Styling */
-        .container { 
-            max-width: 600px; 
-            background: rgba(255, 255, 255, 0.9); /* Slightly translucent white */
-            border-radius: 12px; 
-            padding: 20px 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1.5s ease;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Awareness</title>
+  <style>
+    /* General Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* Prevents scrolling */
+      background: black;
+      color: white;
+    }
 
-        /* Title and Subtitle */
-        .title { 
-            font-size: 28px; 
-            font-weight: bold; 
-            color: #cc0000;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            animation: slideIn 1.5s ease forwards;
-        }
+    /* Fullscreen GIF Container */
+    .background-gif {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('explosion-12681.gif') center/cover no-repeat;
+      animation: fadeOut 2s ease-in forwards;
+      z-index: 1;
+    }
 
-        .subtitle { 
-            font-size: 20px; 
-            color: #0073e6; 
-            margin-top: 10px; 
-            margin-bottom: 20px;
-            animation: slideIn 1.8s ease forwards;
-        }
+    /* Fade out effect for GIF */
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
 
-        /* Content and List Styling */
-        .content { 
-            font-size: 16px; 
-            text-align: left;
-            animation: fadeIn 2s ease;
-        }
+    /* Main Content */
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      opacity: 0; /* Initially hidden */
+      animation: fadeIn 2s ease-in forwards;
+      animation-delay: 2s; /* Starts after the GIF animation */
+    }
 
-        ul { 
-            list-style: none; 
-            padding: 0;
-            animation: fadeIn 2.5s ease;
-        }
+    /* Fade in effect for Content */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
-        ul li {
-            background: #cc0000;
-            color: #ffffff;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 8px;
-            transition: transform 0.3s ease, background 0.3s ease;
-            font-weight: bold;
-        }
+    /* Instruction Box */
+    .instruction-box {
+      position: absolute;
+      display: inline-block;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255, 0, 0, 0.1);
+      border: 2px solid #4b0202;
+      font-size: 1.5rem;
+      text-align: center;
+      color: white;
+      opacity: 0; /* Initially hidden */
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards; /* Ensures the final state is preserved */
+    }
 
-        ul li:hover {
-            transform: scale(1.05);
-            background: #ff5e5e; /* Lighter red on hover */
-        }
+    /* Animations for Instructions */
+    .instruction-1 {
+      animation: leftToCenter 6s ease-in-out 2s forwards;
+    }
 
-        /* Keyframes for Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    .instruction-2 {
+      animation: rightToCenter 6s ease-in-out 6s forwards;
+    }
 
-        @keyframes slideIn {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    .instruction-3 {
+      animation: leftToCenter 6s ease-in-out 10s forwards;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            body { padding: 20px; }
-            .title { font-size: 24px; }
-            .subtitle { font-size: 18px; }
-            ul li { font-size: 14px; }
-        }
-    </style>
+    .instruction-4 {
+        animation: rightToCenter 6s ease-in-out 14s forwards;
+    }
+
+    /* Left-to-Center Movement */
+    @keyframes leftToCenter {
+      0% {
+        transform: translateX(-100vw);
+        opacity: 0;
+      }
+      40% {
+        opacity: 1;
+      }
+      50% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(100vw);
+        opacity: 0;
+      }
+    }
+
+    /* Right-to-Center Movement */
+    @keyframes rightToCenter {
+      0% {
+        transform: translateX(100vw);
+        opacity: 0;
+      }
+      40% {
+        opacity: 1;
+      }
+      50% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-100vw);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <p class="title">You've Been Part of a Phishing Awareness Exercise!</p>
-        <div class="content">
-            <p>This simulated phishing email was designed to help you identify phishing tactics and stay vigilant against real threats. Here are some key tips to help you avoid phishing attacks:</p>
-            <ul>
-                <li><strong>Verify the Sender:</strong> Check the sender’s email address for spelling or unusual domains.</li>
-                <li><strong>Move the Cursor Over Links:</strong> Move the Cursor over links to see if they lead to legitimate websites before clicking.</li>
-                <li><strong>Look for Urgent Language:</strong> Phishing emails often use urgent language to rush decisions. Take time to verify.</li>
-                <li><strong>Avoid Opening Unexpected Attachments:</strong> Only open attachments from trusted sources and be wary of unexpected files.</li>
-                <li><strong>Report Suspicious Emails:</strong> If an email seems unusual, report it to the IT or security team.</li>
-            </ul>
-            <p>Stay vigilant and help us keep our organization secure!</p>
-        </div>
+  <!-- Bomb Reveal GIF -->
+  <div class="background-gif"></div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="instruction-box instruction-1">
+        Verify Sender: Check email addresses for errors or odd domains
     </div>
+    <div class="instruction-box instruction-2">
+        Hover Links: Preview links before clicking.
+    </div>
+    <div class="instruction-box instruction-3">
+        Spot Urgency: Avoid rushed decisions; verify first.
+    </div>
+    <div class="instruction-box instruction-4">
+        Avoid Opening Attachments: Open files only from trusted sources
+    </div>
+  </div>
 </body>
 </html>
